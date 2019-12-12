@@ -15,7 +15,7 @@ app.use(express.static(path.join(rootDir, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //use admin as the root for all admin routes
-app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes.router);
 
 app.use(shopRoutes);
 
