@@ -22,7 +22,7 @@ router.use('/', (req, res, next) => {
 
 router.get('/home', (req, res) => {
   console.log(adminData);
-  res.status(200).render('pug/shop');
+  res.status(200).render('pug/shop', { prods: adminData });
   // res.sendFile(path.join(rootDir, 'views', 'shop.pug'));  This will actually send a file itself
 });
 
