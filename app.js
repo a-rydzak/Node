@@ -5,7 +5,13 @@ const rootDir = require('./helpers/path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const app = express();
+
+// Globally set any values to the express app, view-engine and views are an example
+app.set('view engine', 'pug');
+// where to find our templates
+app.set('views', 'views');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shops');

@@ -5,7 +5,7 @@ const router = express.Router();
 
 const rootDir = require('../helpers/path');
 
-const adminData = require('./admin');
+const adminData = require('./admin').products;
 
 router.use('/', (req, res, next) => {
   console.log('Middleware Happening');
@@ -21,8 +21,9 @@ router.use('/', (req, res, next) => {
 // });
 
 router.get('/home', (req, res) => {
-  console.log(adminData.products);
+  console.log(adminData);
   res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+  res.sendFile(path.join(rootDir, 'views', 'shop.pug'));
 });
 
 module.exports = router;
