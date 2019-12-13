@@ -18,6 +18,7 @@ router.use('/', (req, res, next) => {
 //  @access     Admin
 router.get('/add-product', (req, res, next) => {
   res.render('pug/add-product');
+  // Path was needed for returning a static file ex - download a thing or something....
   // res.status(200).sendFile(path.join(rootDir, 'views', '/pug/add-product.pug'));
 });
 
