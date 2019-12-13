@@ -27,7 +27,11 @@ router.get('/add-product', (req, res, next) => {
 //  @access     Admin
 router.post('/add-product', (req, res) => {
   console.log(req.body.title);
-  products.push({ title: req.body.title });
+  products.push({
+    title: req.body.title,
+    price: req.body.price,
+    desc: req.body.desc
+  });
   res.redirect('/home');
 });
 
