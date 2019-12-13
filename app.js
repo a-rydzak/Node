@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Globally set any values to the express app, view-engine and views are an example
+// enables us to not have to add the .pug after every html page
 app.set('view engine', 'pug');
 // where to find our templates
 app.set('views', 'views');
@@ -27,7 +28,8 @@ app.use(shopRoutes);
 
 // wildcard, if nothing is caught we will render 404 Not found Page
 app.use('*', (req, res, next) => {
-  res.status(404).sendFile(path.join(rootDir, 'views', 'not-found.html'));
+  res.status(404).render('pug/not-found');
+  // res.status(404).sendFile(path.join(rootDir, 'views', '/pug/not-found.pug'));
 });
 
 app.listen(8000);

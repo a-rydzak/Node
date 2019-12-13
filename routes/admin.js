@@ -17,7 +17,8 @@ router.use('/', (req, res, next) => {
 //  @expect     RETURN Admin Product Page
 //  @access     Admin
 router.get('/add-product', (req, res, next) => {
-  res.status(200).sendFile(path.join(rootDir, 'views', 'add-product.html'));
+  res.render('pug/add-product');
+  // res.status(200).sendFile(path.join(rootDir, 'views', '/pug/add-product.pug'));
 });
 
 //  @route      POST /admin/add-product

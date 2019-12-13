@@ -22,8 +22,8 @@ router.use('/', (req, res, next) => {
 
 router.get('/home', (req, res) => {
   console.log(adminData);
-  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
-  res.sendFile(path.join(rootDir, 'views', 'shop.pug'));
+  res.status(200).render('pug/shop');
+  // res.sendFile(path.join(rootDir, 'views', 'shop.pug'));  This will actually send a file itself
 });
 
 module.exports = router;
