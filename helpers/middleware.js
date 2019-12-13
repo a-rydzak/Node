@@ -1,5 +1,6 @@
 const myMiddleware = (req, res, next) => {
-  console.log('Middleware Occuring');
+  console.log('Middleware');
+  // might need this is the app.use() was not in place
   next();
 };
 
