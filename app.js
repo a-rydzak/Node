@@ -2,6 +2,7 @@ const http = require('http');
 const path = require('path');
 
 const rootDir = require('./helpers/path');
+const myMiddleware = require('./helpers/middleware');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,6 +22,7 @@ const shopRoutes = require('./routes/shops');
 app.use(express.static(path.join(rootDir, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(myMiddleware);
 // add Middleware to all - for future use
 app.all('/', function(req, res, next) {
   console.log('Middleware happening');
