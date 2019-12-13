@@ -72,10 +72,11 @@ main {
 .card__content h2,
 .card__content p {
   margin: 0;
+  font-size: 1rem;
 }
 
 .card__image {
-  width: 100%;
+  max-width: 100%;
 }
 
 .card__image img {

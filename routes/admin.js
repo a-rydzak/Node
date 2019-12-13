@@ -4,7 +4,10 @@ const myMiddleware = require('../helpers/middleware');
 
 const express = require('express');
 const router = express.Router();
-const products = [];
+const {
+  getAddProduct,
+  makeProduct
+} = require('../controllers/product-controller');
 
 router.use(myMiddleware);
 // Use middleware in these routes only example
@@ -19,11 +22,7 @@ router.use(myMiddleware);
   @expect     RETURN Admin Product Page
   @access     Admin
 */
-router.get('/add-product', (req, res, next) => {
-  res.render('pug/add-product');
-  // Path was needed for returning a static file ex - download a thing or something....
-  // res.status(200).sendFile(path.join(rootDir, 'views', '/pug/add-product.pug'));
-});
+router.get('/add-product', getAddProduct);
 
 /* 
   @route      POST /admin/add-product
@@ -31,22 +30,7 @@ router.get('/add-product', (req, res, next) => {
   @expect     RETURN redirect to home
   @access     Admin
 */
-router.post('/add-product', (req, res) => {
-  console.log(req.body.title);
-  const title = req.body.title;
-  const price = req.body.price;
-  const desc = req.body.desc;
-
-  if (title.length == 0 || price.length == 0 || desc.length == 0) {
-    return res.redirect('/admin/add-product');
-  }
-  products.push({
-    title: req.body.title,
-    price: req.body.price,
-    desc: req.body.desc
-  });
-  res.redirect('/home');
-});
+router.post('/add-product', makeProduct);
 
 // module.exports = router;
-module.exports = { router, products };
+module.exports = { router };
