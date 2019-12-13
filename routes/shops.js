@@ -7,9 +7,10 @@ const rootDir = require('../helpers/path');
 
 const adminData = require('./admin').products;
 
-router.use('/', (req, res, next) => {
-  console.log('Middleware Happening');
-  next();
+router.all('/', (req, res, next) => {
+  // console.log('Middleware Happening');
+  // next();
+  res.redirect('/home');
 });
 
 // router.get('/home', (req, res) => {

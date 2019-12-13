@@ -21,10 +21,15 @@ const shopRoutes = require('./routes/shops');
 app.use(express.static(path.join(rootDir, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//use admin as the root for all admin routes
-app.use('/admin', adminRoutes.router);
+// add Middleware to all - for future use
+app.all('/', function(req, res, next) {
+  console.log('Middleware happening');
+  next();
+});
 
+//use admin as the root for all admin routes
 app.use(shopRoutes);
+app.use('/admin', adminRoutes.router);
 
 // wildcard, if nothing is caught we will render 404 Not found Page
 app.use('*', (req, res, next) => {
