@@ -1,4 +1,4 @@
-const products = [];
+const Product = require('../models/product');
 
 const getAddProduct = (req, res, next) => {
   res.render('pug/add-product');
@@ -7,7 +7,6 @@ const getAddProduct = (req, res, next) => {
 };
 
 const makeProduct = (req, res, next) => {
-  console.log(req.body.title);
   const title = req.body.title;
   const price = req.body.price;
   const desc = req.body.desc;
@@ -16,12 +15,29 @@ const makeProduct = (req, res, next) => {
     return res.redirect('/admin/add-product');
   }
 
-  products.push({
-    title: req.body.title,
-    price: req.body.price,
-    desc: req.body.desc
-  });
+  const product = new Product(title, price, desc);
+  product.save();
   res.redirect('/home');
 };
 
 module.exports = { getAddProduct, makeProduct, products };
+
+/* ----------------Notes / Examples
+  const makeProduct = (req, res, next) => {
+    console.log(req.body.title);
+    const title = req.body.title;
+    const price = req.body.price;
+    const desc = req.body.desc;
+
+    if (title.length == 0 || price.length == 0 || desc.length == 0) {
+      return res.redirect('/admin/add-product');
+    }
+
+    products.push({
+      title: req.body.title,
+      price: req.body.price,
+      desc: req.body.desc
+    });
+    res.redirect('/home');
+  };
+*/
