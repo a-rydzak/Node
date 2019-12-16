@@ -10,11 +10,6 @@ const {
 } = require('../controllers/product-controller');
 
 router.use(myMiddleware);
-// Use middleware in these routes only example
-// router.post('/', (req, res, next) => {
-//   console.log('Different Middleware');
-//   next();
-// });
 
 /*
   @route      GET /admin/add-product
@@ -32,5 +27,14 @@ router.get('/add-product', getAddProduct);
 */
 router.post('/add-product', makeProduct);
 
-// module.exports = router;
 module.exports = { router };
+
+/*-------------Notes/Examples
+  Use middleware in these routes only example
+  router.post('/', (req, res, next) => {
+    console.log('Different Middleware');
+    next();
+  });
+
+  module.exports = router;
+*/
