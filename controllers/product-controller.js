@@ -20,7 +20,7 @@ const makeProduct = (req, res, next) => {
   res.redirect('/home');
 };
 
-module.exports = { getAddProduct, makeProduct, products };
+module.exports = { getAddProduct, makeProduct, Product };
 
 /* ----------------Notes / Examples
   const makeProduct = (req, res, next) => {
