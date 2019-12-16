@@ -1,10 +1,9 @@
 const express = require('express');
 
 const router = express.Router();
+const { get404 } = require('../controllers/error-controller');
 
-router.get('/', (req, res, next) => {
-  res.status(404).render('pug/not-found');
-});
+router.get('/', get404);
 
 module.exports = router;
 
