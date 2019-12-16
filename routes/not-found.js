@@ -3,6 +3,12 @@ const express = require('express');
 const router = express.Router();
 const { get404 } = require('../controllers/error-controller');
 
+/*
+  @route      GET /* (anny page we don't have)
+  @desc       GET Offical Error Page
+  @expect     RETURN Offical Error Page
+  @access     Public
+*/
 router.get('/', get404);
 
 module.exports = router;
