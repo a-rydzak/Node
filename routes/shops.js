@@ -5,14 +5,10 @@ const router = express.Router();
 
 const rootDir = require('../helpers/path');
 
-const { products } = require('../controllers/product-controller');
+const { getHome, redirHome } = require('../controllers/shop-controller');
 
 // middleware on these routes only
-router.all('/', (req, res, next) => {
-  // console.log('Middleware Happening');
-  // next();
-  res.redirect('/home');
-});
+router.all('/', redirHome);
 
 // router.get('/home', (req, res) => {
 //   res.send('Home!!', 200);
@@ -22,9 +18,6 @@ router.all('/', (req, res, next) => {
 //   res.status(200).send('You Have Landed');
 // });
 
-router.get('/home', (req, res) => {
-  res.status(200).render('pug/shop', { prods: products });
-  // res.sendFile(path.join(rootDir, 'views', 'shop.pug'));  This will actually send a file itself
-});
+router.get('/home', getHome);
 
 module.exports = router;
