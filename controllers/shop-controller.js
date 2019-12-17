@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 
 const getHome = (req, res, next) => {
+  // res.status(200).render('pug/shop', { prods: Product.fetchAll() });
   Product.fetchAll(products => {
     res.status(200).render('pug/shop', { prods: products });
   });

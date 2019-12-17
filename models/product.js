@@ -28,6 +28,7 @@ module.exports = class Product {
   }
 
   //   cb will act as out callback
+
   static fetchAll(cb) {
     const p = path.join(
       path.dirname(process.mainModule.filename),
